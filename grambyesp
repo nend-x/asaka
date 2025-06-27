@@ -212,7 +212,7 @@ local function activateAimbot_esp(targetPart)
         if not targetPart or not targetPart.Parent then
             rOZDKGSc = false
             if yktfcZbI then yktfcZbI:Disconnect() end
-            I("Aimbot", "Aimbot BPFqHFMC lost.", 2)
+            I("Aimbot", "Aimbot target lost.", 2)
             return
         end
 
@@ -314,7 +314,7 @@ BNcYyhJK.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 BNcYyhJK.TextColor3 = Color3.fromRGB(255, 255, 255)
 BNcYyhJK.TextWrapped = true
 BNcYyhJK.TextXAlignment = Enum.TextXAlignment.Left
-BNcYyhJK.Text = "Aimbot (jcEKJnPt)"
+BNcYyhJK.Text = "Aimbot"
 BNcYyhJK.Font = Enum.Font.SourceSans
 BNcYyhJK.TextScaled = true
 BNcYyhJK.Parent = eAKFgRGq
