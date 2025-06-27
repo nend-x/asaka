@@ -1,0 +1,246 @@
+local A = game:GetService("Players")
+local B = A.LocalPlayer
+local C = game:GetService("Workspace")
+local D = game:GetService("RunService")
+local E = game:GetService("UserInputService")
+
+local F = false
+local G = {}
+
+local H = {
+    "ArmL", "ArmR", "Body", "HandL", "HandR", "Head", "HumanoidRootPart", "LegR", "LegL"
+}
+
+local function I(J, K, L)
+    local M = B:WaitForChild("PlayerGui"):FindFirstChild("CustomNotifierGui")
+    if not M then
+        M = Instance.new("ScreenGui")
+        M.Name = "CustomNotifierGui"
+        M.DisplayOrder = 100
+        M.Parent = B:WaitForChild("PlayerGui")
+    end
+
+    local N = Instance.new("Frame")
+    N.Size = UDim2.new(0, 250, 0, 70)
+    N.Position = UDim2.new(0.5, -125, 1, 80)
+    N.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+    N.BorderSizePixel = 0
+    N.AnchorPoint = Vector2.new(0.5, 1)
+    N.ZIndex = 2
+    N.Parent = M
+
+    local O = Instance.new("TextLabel")
+    O.Size = UDim2.new(1, 0, 0.3, 0)
+    O.Position = UDim2.new(0, 0, 0, 0)
+    O.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
+    O.TextColor3 = Color3.fromRGB(255, 255, 255)
+    O.TextScaled = true
+    O.TextXAlignment = Enum.TextXAlignment.Left
+    O.TextWrapped = true
+    O.Font = Enum.Font.SourceSansBold
+    O.Text = "  " .. J
+    O.BorderSizePixel = 0
+    O.ZIndex = 3
+    O.Parent = N
+
+    local P = Instance.new("TextLabel")
+    P.Size = UDim2.new(1, 0, 0.7, 0)
+    P.Position = UDim2.new(0, 0, 0.3, 0)
+    P.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+    P.TextColor3 = Color3.fromRGB(200, 200, 200)
+    P.TextScaled = true
+    P.TextXAlignment = Enum.TextXAlignment.Left
+    P.TextWrapped = true
+    P.Font = Enum.Font.SourceSans
+    P.Text = "  " .. K
+    P.BorderSizePixel = 0
+    P.ZIndex = 3
+    P.Parent = N
+
+    N:TweenPosition(UDim2.new(0.5, -125, 1, -10), "Out", "Quad", 0.5, true)
+
+    task.spawn(function()
+        task.wait(L)
+        N:TweenPosition(UDim2.new(0.5, -125, 1, 80), "In", "Quad", 0.5, true)
+        task.wait(0.5)
+        N:Destroy()
+    end)
+end
+
+local function Q()
+    for R, S in ipairs(G) do
+        if S and S.Parent then
+            S:Destroy()
+        end
+        G[R] = nil
+    end
+    G = {}
+end
+
+local function T()
+    Q()
+
+    if not F then return end
+
+    local U = C:FindFirstChild("WorldObjects")
+    if not U then return end
+
+    for _, V in pairs(U:GetDescendants()) do
+        if V:IsA("Model") and string.match(V.Name, "Assembly%-%d+") then
+            if _G.frickletplayerid and V == _G.frickletplayerid then
+                continue
+            end
+
+            local W = V:FindFirstChild("Fricklet")
+            if W and W:IsA("Model") then
+                local X = W:FindFirstChild("Body")
+                if X and X:IsA("BasePart") then
+                    local Y = Instance.new("BillboardGui")
+                    Y.Name = "FrickletESP"
+                    Y.Size = UDim2.new(0, 0, 0, 0)
+                    Y.AlwaysOnTop = true
+                    Y.ExtentsOffsetWorldSpace = Vector3.new(0, 0, 0)
+                    Y.LightInfluence = 0
+                    Y.Parent = X
+
+                    local Z = Instance.new("BoxHandleAdornment")
+                    Z.Adornee = X
+                    Z.Color3 = Color3.fromRGB(255, 0, 0)
+                    Z.AlwaysOnTop = true
+                    Z.Transparency = 0
+                    Z.ZIndex = 2
+                    Z.Size = X.Size + Vector3.new(0.2, 0.2, 0.2)
+                    Z.Visible = true
+                    Z.Parent = Y
+
+                    table.insert(G, Y)
+                end
+            end
+        end
+    end
+end
+
+C.ChildAdded:Connect(function(a)
+    if F and a:IsA("Model") and string.match(a.Name, "Assembly%-%d+") then
+        task.spawn(T)
+    end
+end)
+
+C.ChildRemoved:Connect(function(b)
+    if F and b:IsA("Model") and string.match(b.Name, "Assembly%-%d+") then
+        task.spawn(T)
+    end
+end)
+
+local c = C:FindFirstChild("WorldObjects")
+if c then
+    c.DescendantAdded:Connect(function(d)
+        if F and d.Name == "Body" and d:IsA("BasePart") and string.match(d.Parent.Name, "Fricklet") and string.match(d.Parent.Parent.Name, "Assembly%-%d+") then
+            task.spawn(T)
+        end
+    end)
+    c.DescendantRemoving:Connect(function(e)
+        if F and e.Name == "Body" and e:IsA("BasePart") and string.match(e.Parent.Name, "Fricklet") and string.match(e.Parent.Parent.Name, "Assembly%-%d+") then
+            task.spawn(T)
+        end
+    end)
+end
+
+local f = Instance.new("ScreenGui")
+f.Name = "ESPCustomUI"
+f.DisplayOrder = 1
+f.Parent = B:WaitForChild("PlayerGui")
+
+local g = Instance.new("Frame")
+g.Size = UDim2.new(0, 250, 0, 70)
+g.Position = UDim2.new(1, -250, 0.2, -75)
+g.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+g.BorderColor3 = Color3.fromRGB(15, 15, 15)
+g.BorderSizePixel = 2
+g.Draggable = true
+g.Visible = false
+g.Parent = f
+
+local h = Instance.new("TextLabel")
+h.Size = UDim2.new(1, 0, 0, 30)
+h.Position = UDim2.new(0, 0, 0, 0)
+h.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+h.TextColor3 = Color3.fromRGB(255, 255, 255)
+h.TextScaled = true
+h.Text = "ESP"
+h.Font = Enum.Font.SourceSansBold
+h.TextWrapped = true
+h.Parent = g
+
+local i = Instance.new("Frame")
+i.Size = UDim2.new(1, -10, 0, 30)
+i.Position = UDim2.new(0, 5, 0, 35)
+i.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+i.BorderSizePixel = 0
+i.Parent = g
+
+local j = Instance.new("TextLabel")
+j.Size = UDim2.new(0.65, 0, 1, 0)
+j.Position = UDim2.new(0, 5, 0, 0)
+j.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+j.TextColor3 = Color3.fromRGB(255, 255, 255)
+j.TextScaled = true
+j.TextXAlignment = Enum.TextXAlignment.Left
+j.Text = "ESP"
+j.Font = Enum.Font.SourceSans
+j.TextWrapped = true
+j.Parent = i
+
+local k = Instance.new("TextButton")
+k.Size = UDim2.new(0.3, 0, 0.8, 0)
+k.Position = UDim2.new(0.68, -5, 0.1, 0)
+k.AnchorPoint = Vector2.new(0, 0)
+k.BorderSizePixel = 1
+k.BorderColor3 = Color3.fromRGB(150, 150, 150)
+k.Font = Enum.Font.SourceSansBold
+k.TextScaled = true
+k.Text = F and "ON" or "OFF"
+k.TextColor3 = F and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+k.BackgroundColor3 = F and Color3.fromRGB(0, 100, 0) or Color3.fromRGB(100, 0, 0)
+k.Parent = i
+
+k.MouseButton1Click:Connect(function()
+    F = not F
+    k.Text = F and "ON" or "OFF"
+    k.TextColor3 = F and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+    k.BackgroundColor3 = F and Color3.fromRGB(0, 100, 0) or Color3.fromRGB(100, 0, 0)
+    T()
+    I("ESP Status", "ESP " .. (F and "enabled" or "disabled"), 2)
+end)
+
+local function l(m, n)
+    local o = string.split(n, ".")
+    local p = m
+    for q, r in ipairs(o) do
+        p = p:WaitForChild(r)
+    end
+    return p
+end
+
+local function s(t)
+    g.Visible = t
+    if not t then
+        Q()
+    end
+end
+
+task.spawn(function()
+    local u = l(B.PlayerGui, "UI.Fone")
+
+    s(u.Visible)
+
+    u:GetPropertyChangedSignal("Visible"):Connect(function()
+        s(u.Visible)
+    end)
+end)
+
+D.Stepped:Connect(function()
+    if F then
+        T()
+    end
+end)
