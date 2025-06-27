@@ -1,246 +1,394 @@
-local A = game:GetService("Players")
-local B = A.LocalPlayer
-local C = game:GetService("Workspace")
-local D = game:GetService("RunService")
-local E = game:GetService("UserInputService")
+local sWRYhSCA = game:GetService("Players")
+local hgSDMEIW = sWRYhSCA.LocalPlayer
+local StAQfLqq = game:GetService("Workspace")
+local bEHWzpsn = game:GetService("RunService")
+local AjZDMQSl = game:GetService("UserInputService")
+local zpLseJhf = hgSDMEIW:GetMouse() 
+local jPcYWIPY = StAQfLqq.CurrentCamera 
 
-local F = false
-local G = {}
+local XSLpLKfF = false 
+local ibSuqEKw = {}    
 
-local H = {
+local yDePDiKe = {
     "ArmL", "ArmR", "Body", "HandL", "HandR", "Head", "HumanoidRootPart", "LegR", "LegL"
 }
 
+
+local PSYvOMzq = false
+local rOZDKGSc = false
+local yktfcZbI = nil
+
+
 local function I(J, K, L)
-    local M = B:WaitForChild("PlayerGui"):FindFirstChild("CustomNotifierGui")
-    if not M then
-        M = Instance.new("ScreenGui")
-        M.Name = "CustomNotifierGui"
-        M.DisplayOrder = 100
-        M.Parent = B:WaitForChild("PlayerGui")
+    local VScmalpD = hgSDMEIW:WaitForChild("PlayerGui"):FindFirstChild("CustomNotifierGui")
+    if not VScmalpD then
+        VScmalpD = Instance.new("ScreenGui")
+        VScmalpD.QBbZUYkW = "CustomNotifierGui"
+        VScmalpD.UmCYMjEV = 100
+        VScmalpD.IlndxIlh = hgSDMEIW:WaitForChild("PlayerGui")
     end
 
-    local N = Instance.new("Frame")
-    N.Size = UDim2.new(0, 250, 0, 70)
-    N.Position = UDim2.new(0.5, -125, 1, 80)
-    N.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-    N.BorderSizePixel = 0
-    N.AnchorPoint = Vector2.new(0.5, 1)
-    N.ZIndex = 2
-    N.Parent = M
+    local nJVDgEbW = Instance.new("Frame")
+    nJVDgEbW.VxmiVREF = UDim2.new(0, 250, 0, 70)
+    nJVDgEbW.dorzIOPj = UDim2.new(0.5, -125, 1, 80)
+    nJVDgEbW.FArQTgwB = Color3.fromRGB(45, 45, 45)
+    nJVDgEbW.EiHJxCZk = 0
+    nJVDgEbW.EMCXTjVC = Vector2.new(0.5, 1)
+    nJVDgEbW.GdviLaqU = 2
+    nJVDgEbW.IlndxIlh = VScmalpD
 
-    local O = Instance.new("TextLabel")
-    O.Size = UDim2.new(1, 0, 0.3, 0)
-    O.Position = UDim2.new(0, 0, 0, 0)
-    O.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
-    O.TextColor3 = Color3.fromRGB(255, 255, 255)
-    O.TextScaled = true
-    O.TextXAlignment = Enum.TextXAlignment.Left
-    O.TextWrapped = true
-    O.Font = Enum.Font.SourceSansBold
-    O.Text = "  " .. J
-    O.BorderSizePixel = 0
-    O.ZIndex = 3
-    O.Parent = N
+    local zpbLKgkn = Instance.new("TextLabel")
+    zpbLKgkn.VxmiVREF = UDim2.new(1, 0, 0.3, 0)
+    zpbLKgkn.dorzIOPj = UDim2.new(0, 0, 0, 0)
+    zpbLKgkn.FArQTgwB = Color3.fromRGB(55, 55, 55)
+    zpbLKgkn.bRRJRPSd = Color3.fromRGB(255, 255, 255)
+    zpbLKgkn.VjRQgohS = true
+    zpbLKgkn.MwDorugE = Enum.MwDorugE.Left
+    zpbLKgkn.ecibRDKW = true
+    zpbLKgkn.vkWFIaub = Enum.vkWFIaub.SourceSansBold
+    zpbLKgkn.SQkRwNtF = "  " .. J
+    zpbLKgkn.EiHJxCZk = 0
+    zpbLKgkn.GdviLaqU = 3
+    zpbLKgkn.IlndxIlh = nJVDgEbW
 
-    local P = Instance.new("TextLabel")
-    P.Size = UDim2.new(1, 0, 0.7, 0)
-    P.Position = UDim2.new(0, 0, 0.3, 0)
-    P.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-    P.TextColor3 = Color3.fromRGB(200, 200, 200)
-    P.TextScaled = true
-    P.TextXAlignment = Enum.TextXAlignment.Left
-    P.TextWrapped = true
-    P.Font = Enum.Font.SourceSans
-    P.Text = "  " .. K
-    P.BorderSizePixel = 0
-    P.ZIndex = 3
-    P.Parent = N
+    local McUnoKSa = Instance.new("TextLabel")
+    McUnoKSa.VxmiVREF = UDim2.new(1, 0, 0.7, 0)
+    McUnoKSa.dorzIOPj = UDim2.new(0, 0, 0.3, 0)
+    McUnoKSa.FArQTgwB = Color3.fromRGB(45, 45, 45)
+    McUnoKSa.bRRJRPSd = Color3.fromRGB(200, 200, 200)
+    McUnoKSa.VjRQgohS = true
+    McUnoKSa.MwDorugE = Enum.MwDorugE.Left
+    McUnoKSa.ecibRDKW = true
+    McUnoKSa.vkWFIaub = Enum.vkWFIaub.SourceSans
+    McUnoKSa.SQkRwNtF = "  " .. K
+    McUnoKSa.EiHJxCZk = 0
+    McUnoKSa.GdviLaqU = 3
+    McUnoKSa.IlndxIlh = nJVDgEbW
 
-    N:TweenPosition(UDim2.new(0.5, -125, 1, -10), "Out", "Quad", 0.5, true)
+    nJVDgEbW:TweenPosition(UDim2.new(0.5, -125, 1, -10), "Out", "Quad", 0.5, true)
 
     task.spawn(function()
         task.wait(L)
-        N:TweenPosition(UDim2.new(0.5, -125, 1, 80), "In", "Quad", 0.5, true)
+        nJVDgEbW:TweenPosition(UDim2.new(0.5, -125, 1, 80), "In", "Quad", 0.5, true)
         task.wait(0.5)
-        N:Destroy()
+        nJVDgEbW:Destroy()
     end)
 end
 
+
 local function Q()
-    for R, S in ipairs(G) do
-        if S and S.Parent then
+    for R, S in ipairs(ibSuqEKw) do
+        if S and S.IlndxIlh then
             S:Destroy()
         end
-        G[R] = nil
+        ibSuqEKw[R] = nil
     end
-    G = {}
+    ibSuqEKw = {}
 end
+
 
 local function T()
     Q()
 
-    if not F then return end
+    if not XSLpLKfF then return end
 
-    local U = C:FindFirstChild("WorldObjects")
-    if not U then return end
+    local xLnlHYfI = StAQfLqq:FindFirstChild("WorldObjects")
+    if not xLnlHYfI then return end
 
-    for _, V in pairs(U:GetDescendants()) do
-        if V:IsA("Model") and string.match(V.Name, "Assembly%-%d+") then
-            if _G.frickletplayerid and V == _G.frickletplayerid then
+    for _, sATXqbxK in pairs(xLnlHYfI:GetDescendants()) do
+        if sATXqbxK:IsA("Model") and string.match(sATXqbxK.QBbZUYkW, "Assembly%-%d+") then
+            if _G.frickletplayerid and sATXqbxK == _G.frickletplayerid then
                 continue
             end
 
-            local W = V:FindFirstChild("Fricklet")
-            if W and W:IsA("Model") then
-                local X = W:FindFirstChild("Body")
-                if X and X:IsA("BasePart") then
-                    local Y = Instance.new("BillboardGui")
-                    Y.Name = "FrickletESP"
-                    Y.Size = UDim2.new(0, 0, 0, 0)
-                    Y.AlwaysOnTop = true
-                    Y.ExtentsOffsetWorldSpace = Vector3.new(0, 0, 0)
-                    Y.LightInfluence = 0
-                    Y.Parent = X
+            local ZzYhXPWp = sATXqbxK:FindFirstChild("Fricklet")
+            if ZzYhXPWp and ZzYhXPWp:IsA("Model") then
+                local nKHPXMbq = ZzYhXPWp:FindFirstChild("Body")
+                if nKHPXMbq and nKHPXMbq:IsA("BasePart") then
+                    local BcBVVRpi = Instance.new("BillboardGui")
+                    BcBVVRpi.QBbZUYkW = "FrickletESP"
+                    BcBVVRpi.VxmiVREF = UDim2.new(0, 0, 0, 0)
+                    BcBVVRpi.eadtTJbS = true
+                    BcBVVRpi.nHdcHshq = Vector3.new(0, 0, 0)
+                    BcBVVRpi.UPHrHpGd = 0
+                    BcBVVRpi.IlndxIlh = nKHPXMbq
 
-                    local Z = Instance.new("BoxHandleAdornment")
-                    Z.Adornee = X
-                    Z.Color3 = Color3.fromRGB(255, 0, 0)
-                    Z.AlwaysOnTop = true
-                    Z.Transparency = 0
-                    Z.ZIndex = 2
-                    Z.Size = X.Size + Vector3.new(0.2, 0.2, 0.2)
-                    Z.Visible = true
-                    Z.Parent = Y
+                    local jcEKJnPt = Instance.new("BoxHandleAdornment")
+                    jcEKJnPt.CWtrmXVz = nKHPXMbq
+                    jcEKJnPt.Color3 = Color3.fromRGB(255, 0, 0)
+                    jcEKJnPt.eadtTJbS = true
+                    jcEKJnPt.TupfXPyw = 0
+                    jcEKJnPt.GdviLaqU = 2
+                    jcEKJnPt.VxmiVREF = nKHPXMbq.VxmiVREF + Vector3.new(0.2, 0.2, 0.2)
+                    jcEKJnPt.PdusfBJz = true
+                    jcEKJnPt.IlndxIlh = BcBVVRpi
 
-                    table.insert(G, Y)
+                    table.insert(ibSuqEKw, BcBVVRpi)
                 end
             end
         end
     end
 end
 
-C.ChildAdded:Connect(function(a)
-    if F and a:IsA("Model") and string.match(a.Name, "Assembly%-%d+") then
+StAQfLqq.ChildAdded:Connect(function(a)
+    if XSLpLKfF and a:IsA("Model") and string.match(a.QBbZUYkW, "Assembly%-%d+") then
         task.spawn(T)
     end
 end)
 
-C.ChildRemoved:Connect(function(b)
-    if F and b:IsA("Model") and string.match(b.Name, "Assembly%-%d+") then
+StAQfLqq.ChildRemoved:Connect(function(b)
+    if XSLpLKfF and b:IsA("Model") and string.match(b.QBbZUYkW, "Assembly%-%d+") then
         task.spawn(T)
     end
 end)
 
-local c = C:FindFirstChild("WorldObjects")
-if c then
-    c.DescendantAdded:Connect(function(d)
-        if F and d.Name == "Body" and d:IsA("BasePart") and string.match(d.Parent.Name, "Fricklet") and string.match(d.Parent.Parent.Name, "Assembly%-%d+") then
+local gjigwJZa = StAQfLqq:FindFirstChild("WorldObjects")
+if gjigwJZa then
+    gjigwJZa.DescendantAdded:Connect(function(d)
+        if XSLpLKfF and d.QBbZUYkW == "Body" and d:IsA("BasePart") and string.match(d.IlndxIlh.QBbZUYkW, "Fricklet") and string.match(d.IlndxIlh.IlndxIlh.QBbZUYkW, "Assembly%-%d+") then
             task.spawn(T)
         end
     end)
-    c.DescendantRemoving:Connect(function(e)
-        if F and e.Name == "Body" and e:IsA("BasePart") and string.match(e.Parent.Name, "Fricklet") and string.match(e.Parent.Parent.Name, "Assembly%-%d+") then
+    gjigwJZa.DescendantRemoving:Connect(function(e)
+        if XSLpLKfF and e.QBbZUYkW == "Body" and e:IsA("BasePart") and string.match(e.IlndxIlh.QBbZUYkW, "Fricklet") and string.match(e.IlndxIlh.IlndxIlh.QBbZUYkW, "Assembly%-%d+") then
             task.spawn(T)
         end
     end)
 end
 
-local f = Instance.new("ScreenGui")
-f.Name = "ESPCustomUI"
-f.DisplayOrder = 1
-f.Parent = B:WaitForChild("PlayerGui")
 
-local g = Instance.new("Frame")
-g.Size = UDim2.new(0, 250, 0, 70)
-g.Position = UDim2.new(1, -250, 0.2, -75)
-g.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-g.BorderColor3 = Color3.fromRGB(15, 15, 15)
-g.BorderSizePixel = 2
-g.Draggable = true
-g.Visible = false
-g.Parent = f
+local function getMouseWorldPosition_esp()
+    local wOIQuVKL = jPcYWIPY:ScreenPointToRay(zpLseJhf.nKHPXMbq, zpLseJhf.BcBVVRpi)
+    local cGWZRVLa = RaycastParams.new()
+    cGWZRVLa.IGmtjMtt = {hgSDMEIW.Character}
+    cGWZRVLa.eywjrDZf = Enum.RaycastFilterType.Exclude
 
-local h = Instance.new("TextLabel")
-h.Size = UDim2.new(1, 0, 0, 30)
-h.Position = UDim2.new(0, 0, 0, 0)
-h.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-h.TextColor3 = Color3.fromRGB(255, 255, 255)
-h.TextScaled = true
-h.Text = "ESP"
-h.Font = Enum.Font.SourceSansBold
-h.TextWrapped = true
-h.Parent = g
+    local RKelromD = StAQfLqq:Raycast(wOIQuVKL.Origin, wOIQuVKL.Direction * 1000, cGWZRVLa)
 
-local i = Instance.new("Frame")
-i.Size = UDim2.new(1, -10, 0, 30)
-i.Position = UDim2.new(0, 5, 0, 35)
-i.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-i.BorderSizePixel = 0
-i.Parent = g
+    if RKelromD then
+        return RKelromD.dorzIOPj
+    else
+        return wOIQuVKL.Origin + wOIQuVKL.Direction * 500
+    end
+end
 
-local j = Instance.new("TextLabel")
-j.Size = UDim2.new(0.65, 0, 1, 0)
-j.Position = UDim2.new(0, 5, 0, 0)
-j.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-j.TextColor3 = Color3.fromRGB(255, 255, 255)
-j.TextScaled = true
-j.TextXAlignment = Enum.TextXAlignment.Left
-j.Text = "ESP"
-j.Font = Enum.Font.SourceSans
-j.TextWrapped = true
-j.Parent = i
+local function findClosestBodyToMouse_esp()
+    local cPBVgNEn = jPcYWIPY.CFrame.dorzIOPj
+    local zoDEKaYl = (getMouseWorldPosition_esp() - cPBVgNEn).Unit
+    local ROHQPiWC = nil
+    local REbeEOeU = math.huge
 
-local k = Instance.new("TextButton")
-k.Size = UDim2.new(0.3, 0, 0.8, 0)
-k.Position = UDim2.new(0.68, -5, 0.1, 0)
-k.AnchorPoint = Vector2.new(0, 0)
-k.BorderSizePixel = 1
-k.BorderColor3 = Color3.fromRGB(150, 150, 150)
-k.Font = Enum.Font.SourceSansBold
-k.TextScaled = true
-k.Text = F and "ON" or "OFF"
-k.TextColor3 = F and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
-k.BackgroundColor3 = F and Color3.fromRGB(0, 100, 0) or Color3.fromRGB(100, 0, 0)
-k.Parent = i
+    local wegPuDwY = StAQfLqq:FindFirstChild("WorldObjects")
+    if not wegPuDwY then return nil end
 
-k.MouseButton1Click:Connect(function()
-    F = not F
-    k.Text = F and "ON" or "OFF"
-    k.TextColor3 = F and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
-    k.BackgroundColor3 = F and Color3.fromRGB(0, 100, 0) or Color3.fromRGB(100, 0, 0)
+    for _, UtqQHCub in pairs(wegPuDwY:GetDescendants()) do
+        if UtqQHCub:IsA("Model") and string.match(UtqQHCub.QBbZUYkW, "Assembly%-%d+") then
+            local XgkyXvCk = UtqQHCub:FindFirstChild("Fricklet")
+            if XgkyXvCk and XgkyXvCk:IsA("Model") then
+                local zDzodJxS = XgkyXvCk:FindFirstChild("Body")
+                if zDzodJxS and zDzodJxS:IsA("BasePart") then
+                    if _G.frickletplayerid and UtqQHCub == _G.frickletplayerid then
+                        continue
+                    end
+
+                    local JOzTCryF = (zDzodJxS.dorzIOPj - cPBVgNEn).Unit
+                    local PBRqJuDL = math.acos(zoDEKaYl:Dot(JOzTCryF))
+
+                    if PBRqJuDL < REbeEOeU then
+                        REbeEOeU = PBRqJuDL
+                        ROHQPiWC = zDzodJxS
+                    end
+                end
+            end
+        end
+    end
+    return ROHQPiWC
+end
+
+local function activateAimbot_esp(targetPart)
+    if yktfcZbI then yktfcZbI:Disconnect() end
+
+    yktfcZbI = bEHWzpsn.RenderStepped:Connect(function()
+        if not targetPart or not targetPart.IlndxIlh then
+            rOZDKGSc = false
+            if yktfcZbI then yktfcZbI:Disconnect() end
+            I("Aimbot", "Aimbot BPFqHFMC lost.", 2)
+            return
+        end
+
+        local LbpUyxtH = targetPart.dorzIOPj
+        jPcYWIPY.CFrame = CFrame.new(jPcYWIPY.CFrame.dorzIOPj, LbpUyxtH)
+    end)
+    I("Aimbot", "Aimbot activated!", 2)
+end
+
+local function deactivateAimbot_esp()
+    if yktfcZbI then
+        yktfcZbI:Disconnect()
+        yktfcZbI = nil
+    end
+    rOZDKGSc = false
+    I("Aimbot", "Aimbot deactivated.", 2)
+end
+
+local eAlsuzCY = Instance.new("ScreenGui")
+eAlsuzCY.QBbZUYkW = "ESPCustomUI"
+eAlsuzCY.UmCYMjEV = 1
+eAlsuzCY.IlndxIlh = hgSDMEIW:WaitForChild("PlayerGui")
+
+local yLkTZHDk = Instance.new("Frame")
+yLkTZHDk.VxmiVREF = UDim2.new(0, 250, 0, 100) 
+yLkTZHDk.dorzIOPj = UDim2.new(1, -250, 0.2, -75)
+yLkTZHDk.FArQTgwB = Color3.fromRGB(30, 30, 30)
+yLkTZHDk.PIDwyoER = Color3.fromRGB(15, 15, 15)
+yLkTZHDk.EiHJxCZk = 2
+yLkTZHDk.lxuIXVWj = true
+yLkTZHDk.PdusfBJz = false
+yLkTZHDk.IlndxIlh = eAlsuzCY
+
+local LpezyLJW = Instance.new("TextLabel")
+LpezyLJW.VxmiVREF = UDim2.new(1, 0, 0, 30)
+LpezyLJW.dorzIOPj = UDim2.new(0, 0, 0, 0)
+LpezyLJW.FArQTgwB = Color3.fromRGB(40, 40, 40)
+LpezyLJW.bRRJRPSd = Color3.fromRGB(255, 255, 255)
+LpezyLJW.VjRQgohS = true
+LpezyLJW.SQkRwNtF = "ESP / Aimbot" 
+LpezyLJW.vkWFIaub = Enum.vkWFIaub.SourceSansBold
+LpezyLJW.ecibRDKW = true
+LpezyLJW.IlndxIlh = yLkTZHDk
+
+
+local NoYvZIWt = Instance.new("Frame")
+NoYvZIWt.VxmiVREF = UDim2.new(1, -10, 0, 30)
+NoYvZIWt.dorzIOPj = UDim2.new(0, 5, 0, 35) 
+NoYvZIWt.FArQTgwB = Color3.fromRGB(30, 30, 30)
+NoYvZIWt.EiHJxCZk = 0
+NoYvZIWt.IlndxIlh = yLkTZHDk
+
+local AAkGJETw = Instance.new("TextLabel")
+AAkGJETw.VxmiVREF = UDim2.new(0.65, 0, 1, 0)
+AAkGJETw.dorzIOPj = UDim2.new(0, 5, 0, 0)
+AAkGJETw.FArQTgwB = Color3.fromRGB(30, 30, 30)
+AAkGJETw.bRRJRPSd = Color3.fromRGB(255, 255, 255)
+AAkGJETw.VjRQgohS = true
+AAkGJETw.MwDorugE = Enum.MwDorugE.Left
+AAkGJETw.SQkRwNtF = "ESP"
+AAkGJETw.vkWFIaub = Enum.vkWFIaub.SourceSans
+AAkGJETw.ecibRDKW = true
+AAkGJETw.IlndxIlh = NoYvZIWt
+
+local nelvFSPo = Instance.new("TextButton")
+nelvFSPo.VxmiVREF = UDim2.new(0.3, 0, 0.8, 0)
+nelvFSPo.dorzIOPj = UDim2.new(0.68, -5, 0.1, 0)
+nelvFSPo.EMCXTjVC = Vector2.new(0, 0)
+nelvFSPo.EiHJxCZk = 1
+nelvFSPo.PIDwyoER = Color3.fromRGB(150, 150, 150)
+nelvFSPo.vkWFIaub = Enum.vkWFIaub.SourceSansBold
+nelvFSPo.VjRQgohS = true
+nelvFSPo.SQkRwNtF = XSLpLKfF and "ON" or "OFF"
+nelvFSPo.bRRJRPSd = XSLpLKfF and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+nelvFSPo.FArQTgwB = XSLpLKfF and Color3.fromRGB(0, 100, 0) or Color3.fromRGB(100, 0, 0)
+nelvFSPo.IlndxIlh = NoYvZIWt
+
+nelvFSPo.MouseButton1Click:Connect(function()
+    XSLpLKfF = not XSLpLKfF
+    nelvFSPo.SQkRwNtF = XSLpLKfF and "ON" or "OFF"
+    nelvFSPo.bRRJRPSd = XSLpLKfF and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+    nelvFSPo.FArQTgwB = XSLpLKfF and Color3.fromRGB(0, 100, 0) or Color3.fromRGB(100, 0, 0)
     T()
-    I("ESP Status", "ESP " .. (F and "enabled" or "disabled"), 2)
+    I("ESP Status", "ESP " .. (XSLpLKfF and "enabled" or "disabled"), 2)
 end)
 
-local function l(m, n)
-    local o = string.split(n, ".")
-    local p = m
-    for q, r in ipairs(o) do
-        p = p:WaitForChild(r)
+
+local eAKFgRGq = Instance.new("Frame")
+eAKFgRGq.VxmiVREF = UDim2.new(1, -10, 0, 30)
+eAKFgRGq.dorzIOPj = UDim2.new(0, 5, 0, 70) 
+eAKFgRGq.FArQTgwB = Color3.fromRGB(30, 30, 30)
+eAKFgRGq.EiHJxCZk = 0
+eAKFgRGq.IlndxIlh = yLkTZHDk
+
+local BNcYyhJK = Instance.new("TextLabel")
+BNcYyhJK.VxmiVREF = UDim2.new(0.65, 0, 1, 0)
+BNcYyhJK.dorzIOPj = UDim2.new(0, 5, 0, 0)
+BNcYyhJK.FArQTgwB = Color3.fromRGB(30, 30, 30)
+BNcYyhJK.bRRJRPSd = Color3.fromRGB(255, 255, 255)
+BNcYyhJK.VjRQgohS = true
+BNcYyhJK.MwDorugE = Enum.MwDorugE.Left
+BNcYyhJK.SQkRwNtF = "Aimbot (jcEKJnPt)"
+BNcYyhJK.vkWFIaub = Enum.vkWFIaub.SourceSans
+BNcYyhJK.ecibRDKW = true
+BNcYyhJK.IlndxIlh = eAKFgRGq
+
+local KKhkICTF = Instance.new("TextButton")
+KKhkICTF.VxmiVREF = UDim2.new(0.3, 0, 0.8, 0)
+KKhkICTF.dorzIOPj = UDim2.new(0.68, -5, 0.1, 0)
+KKhkICTF.EMCXTjVC = Vector2.new(0, 0)
+KKhkICTF.EiHJxCZk = 1
+KKhkICTF.PIDwyoER = Color3.fromRGB(150, 150, 150)
+KKhkICTF.vkWFIaub = Enum.vkWFIaub.SourceSansBold
+KKhkICTF.VjRQgohS = true
+KKhkICTF.SQkRwNtF = PSYvOMzq and "ON" or "OFF"
+KKhkICTF.bRRJRPSd = PSYvOMzq and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+KKhkICTF.FArQTgwB = PSYvOMzq and Color3.fromRGB(0, 100, 0) or Color3.fromRGB(100, 0, 0)
+KKhkICTF.IlndxIlh = eAKFgRGq
+
+KKhkICTF.MouseButton1Click:Connect(function()
+    PSYvOMzq = not PSYvOMzq
+    KKhkICTF.SQkRwNtF = PSYvOMzq and "ON" or "OFF"
+    KKhkICTF.bRRJRPSd = PSYvOMzq and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+    KKhkICTF.FArQTgwB = PSYvOMzq and Color3.fromRGB(0, 100, 0) or Color3.fromRGB(100, 0, 0)
+    if not PSYvOMzq and rOZDKGSc then
+        deactivateAimbot_esp()
     end
-    return p
+    I("Aimbot Status", "Aimbot " .. (PSYvOMzq and "enabled" or "disabled"), 2)
+end)
+
+
+local function l(m, n)
+    local rdgESQYw = string.split(n, ".")
+    local hqlEMavV = m
+    for q, r in ipairs(rdgESQYw) do
+        hqlEMavV = hqlEMavV:WaitForChild(r)
+    end
+    return hqlEMavV
 end
 
 local function s(t)
-    g.Visible = t
+    yLkTZHDk.PdusfBJz = t
     if not t then
         Q()
     end
 end
 
 task.spawn(function()
-    local u = l(B.PlayerGui, "UI.Fone")
+    local FLgRJBBC = l(hgSDMEIW.PlayerGui, "UI.Fone")
 
-    s(u.Visible)
+    s(FLgRJBBC.PdusfBJz)
 
-    u:GetPropertyChangedSignal("Visible"):Connect(function()
-        s(u.Visible)
+    FLgRJBBC:GetPropertyChangedSignal("PdusfBJz"):Connect(function()
+        s(FLgRJBBC.PdusfBJz)
     end)
 end)
 
-D.Stepped:Connect(function()
-    if F then
+bEHWzpsn.Stepped:Connect(function()
+    if XSLpLKfF then
         T()
+    end
+end)
+
+
+AjZDMQSl.InputBegan:Connect(function(input, gameProcessedEvent)
+    if not gameProcessedEvent and input.VDGZLdKN == Enum.VDGZLdKN.jcEKJnPt and PSYvOMzq then
+        if rOZDKGSc then
+            deactivateAimbot_esp()
+        else
+            local BPFqHFMC = findClosestBodyToMouse_esp()
+            if BPFqHFMC then
+                rOZDKGSc = true
+                activateAimbot_esp(BPFqHFMC)
+            else
+                I("Aimbot", "not found.", 2)
+            end
+        end
     end
 end)
