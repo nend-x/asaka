@@ -24,11 +24,19 @@ Button.TextColor3 = Color3.fromRGB(255, 255, 255)
 local function aZx(part, targetPos)
 	part.Touched:Connect(function(hit)
 		local player = game.Players:GetPlayerFromCharacter(hit.Parent)
-		if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-			player.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos)
+		local character = player and player.Character
+		if character and character:FindFirstChild("HumanoidRootPart") then
+			local root = character.HumanoidRootPart
+			local offset = targetPos - root.Position
+			for _, child in pairs(character:GetChildren()) do
+				if child:IsA("BasePart") then
+					child.CFrame = child.CFrame + offset
+				end
+			end
 		end
 	end)
 end
+
 
 local function kWq(position)
 	local wall = Instance.new("Part")
@@ -83,9 +91,7 @@ local function pEx(position)
 end
 
 Button.MouseButton1Click:Connect(function()
-	kWq(Vector3.new(685, 198, 915))
-	kWq(Vector3.new(685, 198, 926))
-	tRm(Vector3.new(676, 190, 921))
+	tRm(Vector3.new(676, 191, 921))
 	nYv(Vector3.new(675, 386, 793))
 	pEx(Vector3.new(696, 393, 793))
 end)
